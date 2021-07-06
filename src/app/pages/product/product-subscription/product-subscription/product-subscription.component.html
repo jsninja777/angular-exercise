@@ -1,0 +1,23 @@
+<div fxLayout="column">
+    <div fxLayout.gt-md="row" fxLayout.md="row" fxLayout.lt-md="column" fxLayoutAlign="space-around stretch" fxLayoutGap="20px" >
+        <mat-card fxLayout="column" fxLayoutAlign="start center" [ngStyle.lt-md]="{'width':'100%'}" fxFlex.lt-md="99.9%" fxFlex.gt-md="30%" fxFlex.md="30%" *ngFor="let productSubscription of productSubscriptions">
+            <h2>{{productSubscription?.name | uppercase}}</h2>
+            <div fxLayout="column">
+                <h4 fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px"
+                    *ngFor="let plan of productSubscription.plans">
+                        <div>{{plan?.priceCents/100 | currency:plan.currency }} </div>
+                        <div>per</div>
+                        <div *ngIf="plan.paymentInterval">{{plan.paymentInterval | titlecase }}</div>
+                        <div *ngIf="plan.interval">{{plan.interval | titlecase }}</div>
+                </h4>
+            </div>
+            <p *ngFor="let feature of productSubscription?.features">
+                {{feature}}
+            </p>
+            <button class="subscribe-button" mat-button  mat-raised-button color="primary">Subscribe</button>
+        </mat-card>
+    </div>
+    <div>
+
+    </div>
+</div>

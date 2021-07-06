@@ -1,0 +1,39 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div fxFlex="30%" fxLayout="row">
+        <button mat-icon-button fxHide.md fxHide.gt-md>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+        <h1 fxLayoutAlign="start center">Subscriptions App</h1>
+        <span class="menu-spacer"></span>
+      </div>
+      <div fxFlex fxLayoutAlign="center center" fxHide.lt-md>
+        <a mat-button [routerLink]="'/home'"> Home </a>
+        <a mat-button [routerLink]="'/product/subscription'"> Product Subscription </a>
+  
+      </div>
+      <div fxFlex="30%"></div>
+    </mat-toolbar-row>
+  
+    <!-- <mat-toolbar-row>
+        <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>
+      </mat-toolbar-row> -->
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav fxHide.md fxHide.gt-md>
+      <mat-nav-list fxLayout="column" fxLayoutAlign="start stretch">
+  
+        <a mat-button [routerLink]="'/home'" fxLayoutAlign="start center"> Home </a>
+        <a mat-button [routerLink]="'/product/subscription'" fxLayoutAlign="start center"> Product Subscription </a>
+  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="padding: 30px 70px;">
+  
+        <ng-content></ng-content>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
